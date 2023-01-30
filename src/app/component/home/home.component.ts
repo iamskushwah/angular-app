@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersDataService } from 'src/app/services/users-data.service';
+
+
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  userData :any= [];
+
+  constructor(private userdataService:UsersDataService) {} 
+
 
   ngOnInit(): void {
   }
 
+apicall(){
+  this.userdataService.getUserData().subscribe(data =>{
+   this.userData = data;
+   });
+
+
+}
 }
