@@ -1,1 +1,22 @@
 <h1 style="color: rgb(0, 255, 30);">Hii Angular</h1>
+
+<button (click) = "datacall()">submit</button>
+<br><br>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>postid</th>
+        <th>email</th>
+        <th>body</th>
+        <th>name</th>
+
+    </tr>
+    <tr *ngFor="let student of studentdata">
+        <td>{{student.id}}</td>
+        <td>{{student.postid}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.body}}</td>
+        <td>{{student.name}}</td>
+    </tr>
+</table>
