@@ -21,9 +21,8 @@ apicall(){
   this.userdataService.getUserData().subscribe(data =>{
    this.userData = data;
    });
+  }
 
 
 
-
-}
 }

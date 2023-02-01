@@ -18,4 +18,14 @@ export class UsersDataService {
     let apiUrl = "https://jsonplaceholder.typicode.com/posts/1/comments";
     return this.http.get<any>(apiUrl);
    }
+
+   postUserData(data:any){
+    let apiUrl = "https://jsonplaceholder.typicode.com/posts";
+    return this.http.post<any>(apiUrl,data);
+   }
+
+   postCompanyData(data:any){
+    let apiUrl = "https://jsonplaceholder.typicode.com/posts";
+    return this.http.post<any>(apiUrl,data);
+   }
 }

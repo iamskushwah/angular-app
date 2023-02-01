@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl} from '@angular/forms';
+import { UsersDataService } from 'src/app/services/users-data.service';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -7,7 +8,8 @@ import { FormGroup,FormControl} from '@angular/forms';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+requestBody : any;
+  constructor(private service : UsersDataService) { }
 
   ngOnInit(): void {
   }
@@ -15,33 +17,37 @@ export class AboutComponent implements OnInit {
 
   users= {
     id : "",
-    userid:"",
+    name : "",
     title: "",
-    body: "",
-    name: "",
+   
   }
-  ContactFrom =new FormGroup({
+  ContactForm =new FormGroup({
    id : new FormControl(''), 
-   usersid: new FormControl(''),
-   body: new FormControl(''),
+   name : new FormControl(''),
    title: new FormControl(''),
-   name: new FormControl(''),
-
   });
 
   formSubmit(value:any){
-
     var id = value.id;
-    
-    var userid = value.userid;
-    var body= value.body;
-    var title = value.title;
     var name = value.name;
-
-    console.log(id+"," +userid+"," +body+"," +title+"," +name);
-
+    var title = value.title;
+    this.requestBody = {
+      "userId" : id,
+      "title" : title,
+      "body" : name
+    }
   }
- 
+ data:any
+  postUserData(){
+    this.service.postUserData(this.requestBody).subscribe(res=>{
+      console.log(res);
+    })
+  }
+postCompanyData(){
+  this.service.postCompanyData(this.requestBody).subscribe(data=>{
+    console.log(data);
+  })
+}
 
 
   }
